@@ -14,7 +14,170 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profile_narratives: {
+        Row: {
+          created_at: string
+          headline: string | null
+          id: string
+          persona: string
+          skills: string[]
+          summary: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          headline?: string | null
+          id?: string
+          persona: string
+          skills?: string[]
+          summary?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          headline?: string | null
+          id?: string
+          persona?: string
+          skills?: string[]
+          summary?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          accent: string
+          active_persona: string
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          font_pair: string
+          full_name: string | null
+          github_url: string | null
+          id: string
+          is_published: boolean
+          leetcode_url: string | null
+          linkedin_url: string | null
+          theme: string
+          twitter_url: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          accent?: string
+          active_persona?: string
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          font_pair?: string
+          full_name?: string | null
+          github_url?: string | null
+          id?: string
+          is_published?: boolean
+          leetcode_url?: string | null
+          linkedin_url?: string | null
+          theme?: string
+          twitter_url?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          accent?: string
+          active_persona?: string
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          font_pair?: string
+          full_name?: string | null
+          github_url?: string | null
+          id?: string
+          is_published?: boolean
+          leetcode_url?: string | null
+          linkedin_url?: string | null
+          theme?: string
+          twitter_url?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          created_at: string
+          description: string | null
+          github_link: string | null
+          id: string
+          image_url: string | null
+          live_demo_url: string | null
+          position: number
+          tech_stack: string[]
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          github_link?: string | null
+          id?: string
+          image_url?: string | null
+          live_demo_url?: string | null
+          position?: number
+          tech_stack?: string[]
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          github_link?: string | null
+          id?: string
+          image_url?: string | null
+          live_demo_url?: string | null
+          position?: number
+          tech_stack?: string[]
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      vibe_narratives: {
+        Row: {
+          content_text: string
+          created_at: string
+          id: string
+          persona: string
+          project_id: string
+          user_id: string
+        }
+        Insert: {
+          content_text: string
+          created_at?: string
+          id?: string
+          persona: string
+          project_id: string
+          user_id: string
+        }
+        Update: {
+          content_text?: string
+          created_at?: string
+          id?: string
+          persona?: string
+          project_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vibe_narratives_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
