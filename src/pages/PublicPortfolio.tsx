@@ -77,7 +77,7 @@ const PublicPortfolio = () => {
           <span className="size-4 rounded bg-gradient-primary inline-block" /> Made with VibeVault
         </Link>
       </header>
-      <main className="max-w-5xl mx-auto pb-32">
+      <main className="max-w-6xl mx-auto pb-32">
         <PortfolioView data={data} persona={persona} />
       </main>
       <PersonaSwitcher value={persona} onChange={setPersona} floating />
