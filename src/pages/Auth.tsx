@@ -43,15 +43,22 @@ const AuthPage = () => {
     setLoading(true);
     try {
       if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email: parsed.data.email,
           password: parsed.data.password,
           options: {
-            emailRedirectTo: `${window.location.origin}/dashboard`,
+            emailRedirectTo: `${window.location.origin}/onboarding`,
             data: { full_name: parsed.data.full_name },
           },
         });
         if (error) throw error;
+        // If email confirmation is off, a session is returned immediately.
+        if (!data.session) {
+          const { error: signInErr } = await supabase.auth.signInWithPassword({
+            email: parsed.data.email, password: parsed.data.password,
+          });
+          if (signInErr) throw signInErr;
+        }
         toast({ title: "Welcome to VibeVault", description: "Account created — let's build your portfolio." });
         navigate("/onboarding", { replace: true });
       } else {
