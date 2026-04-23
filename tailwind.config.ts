@@ -63,6 +63,20 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        display: ["var(--font-display, 'Space Grotesk')", "system-ui", "sans-serif"],
+        body: ["var(--font-body, 'Inter')", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono, 'JetBrains Mono')", "ui-monospace", "monospace"],
+      },
+      backgroundImage: {
+        "gradient-primary": "var(--gradient-primary)",
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-mesh": "var(--gradient-mesh)",
+      },
+      boxShadow: {
+        glow: "var(--shadow-glow)",
+        elegant: "var(--shadow-elegant)",
+      },
       keyframes: {
         "accordion-down": {
           from: {
@@ -80,10 +94,25 @@ export default {
             height: "0",
           },
         },
+        "float": {
+          "0%,100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        "pulse-glow": {
+          "0%,100%": { boxShadow: "0 0 0 0 hsl(var(--primary) / 0.5)" },
+          "50%": { boxShadow: "0 0 40px 8px hsl(var(--primary) / 0.0)" },
+        },
+        "shimmer": {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 5s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2.4s ease-in-out infinite",
+        shimmer: "shimmer 2.4s linear infinite",
       },
     },
   },

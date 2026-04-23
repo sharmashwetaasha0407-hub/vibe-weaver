@@ -1,0 +1,3 @@
+project_id = "ylwoprsedyhvwqsjtzqq"
+[functions.generate-vibes]
+verify_jwt = true
