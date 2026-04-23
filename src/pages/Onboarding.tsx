@@ -11,7 +11,13 @@ import { ArrowLeft, ArrowRight, Github, Linkedin, Code2, Twitter, FileText, Load
 import { extractPdfText } from "@/lib/parseResume";
 import { applyTheme } from "@/lib/applyTheme";
 
-const urlOrEmpty = z.string().trim().max(300).url().optional().or(z.literal(""));
+const urlOrEmpty = z
+  .string()
+  .trim()
+  .max(300)
+  .optional()
+  .or(z.literal(""))
+  .refine((v) => !v || /^https?:\/\/.+\..+/.test(v), { message: "Must be a valid URL starting with http(s)://" });
 const stepSchema = z.object({
   full_name: z.string().trim().min(1).max(80),
   github_url: urlOrEmpty,
